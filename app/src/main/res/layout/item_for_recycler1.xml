@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@drawable/imige_shape">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/imige_shape"
+        android:src="@drawable/mushroom_qama"
+        android:padding="10dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@drawable/liner_shape">
+
+        <TextView
+            android:id="@+id/tvMushroomName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:padding="10dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/tvMushroomStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/very_dangerous"
+            android:layout_gravity="center_vertical"
+            android:drawableEnd="@drawable/dangerous"
+            android:drawablePadding="10dp"
+            android:textColor="@color/black"/>
+
+        <ImageButton
+            android:id="@+id/rmvBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/delete_bin"
+            android:layout_gravity="center_vertical"
+            android:background="@color/transparent_color"/>
+
+        <ImageButton
+            android:id="@+id/moreBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/info_btn"
+            android:layout_gravity="center_vertical"
+            android:background="@color/transparent_color" />
+
+    </LinearLayout>
+</FrameLayout>
