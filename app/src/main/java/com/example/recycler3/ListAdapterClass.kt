@@ -5,10 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recycler3.databinding.Item2ForRecycler1Binding
 import com.example.recycler3.databinding.ItemForRecycler1Binding
@@ -23,21 +21,20 @@ class ListAdapterClass(): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     inner class MushroomViewHolder(private val binding: ItemForRecycler1Binding):RecyclerView.ViewHolder(binding.root){
         @RequiresApi(Build.VERSION_CODES.Q)
         fun bind(mushroom: Mushroom){
-            binding.apply {
-
-            }
+            binding.tvMushroomName.text = mushroom.name
         }
     }
 
     inner class TextViewHolder(private val binding: Item2ForRecycler1Binding):RecyclerView.ViewHolder(binding.root){
         fun bind(mushroom: Mushroom){
+
         }
     }
 
     private val differCallback = object : DiffUtil.ItemCallback<Mushroom>() {
 
         override fun areItemsTheSame(oldItem: Mushroom, newItem: Mushroom): Boolean {
-            Log.d("tag123","item id was checked")
+            Log.d("tag123","item id was checked ${oldItem.id == newItem.id}")
             return oldItem.id == newItem.id
         }
 
@@ -59,6 +56,16 @@ class ListAdapterClass(): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     fun submitList(list: MutableList<Mushroom>) {
         differ.submitList(list)
+    }
+
+    fun add(mushroom: Mushroom, position: Int) {
+        val currentList = differ.currentList.toMutableList()
+        if (position < currentList.size) {
+            currentList.add(position, mushroom)
+        } else {
+            currentList.add(mushroom) // Add at the end if position is greater than the list size
+        }
+        submitList(currentList)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):RecyclerView.ViewHolder{

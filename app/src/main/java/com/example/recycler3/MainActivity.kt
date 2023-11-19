@@ -30,26 +30,34 @@ class MainActivity : AppCompatActivity() {
         binding.apply {
 
             addBtn1.setOnClickListener{
-                add()
+                val mushroom = Mushroom("Gapirvelda",IsAdible.ADIBLE,50,1)
+                add(mushroom,0)
             }
 
             recyclerView1.apply {
                 setHasFixedSize(true)
                 layoutManager = GridLayoutManager(this@MainActivity, 1)
                 adapter = myAdaper
+                updateList()
             }
 
         }
     }
 
-    fun add(){
-        var listToCast = mutableListOf<Mushroom>(
+    fun updateList(){
+        val listToCast = mutableListOf<Mushroom>(
             Mushroom("HoneyMushroom",IsAdible.ADIBLE,0,1),
             Mushroom("NikasMushroom",IsAdible.DENGEROUS,1,1),
             Mushroom("Qama",IsAdible.MIGHT_HARM,2,1),
             Mushroom("Qama1",IsAdible.MIGHT_HARM,3,2),
-            Mushroom("NikasMushroom",IsAdible.DENGEROUS,4,1)
+            Mushroom("NikasMushroom",IsAdible.DENGEROUS,4,1),
+            Mushroom("NiokasMushroom",IsAdible.DENGEROUS,5,1),
+            Mushroom("Ni9kasMushroom",IsAdible.DENGEROUS,6,1),
         )
         myAdaper.submitList(listToCast)
+    }
+
+    fun add(mushroom:Mushroom,position: Int){
+        myAdaper.add(mushroom,position)
     }
 }
